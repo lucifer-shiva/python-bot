@@ -206,7 +206,7 @@ def send_text(message):
 
         keyboard = telebot.types.ReplyKeyboardMarkup(True)
         keyboard.row('🚫 Cancel')
-        send = bot.send_message(message.chat.id, "_⚠️Send your TRX Wallet Address._",
+        send = bot.send_message(message.chat.id, "_⚠️Send your Infotech Wallet Address._",
                                 parse_mode="Markdown", reply_markup=keyboard)
         # Next message will call the name_handler function
         bot.register_next_step_handler(message, trx_address)
@@ -262,7 +262,7 @@ def send_text(message):
                 user_id, f"_❌Your balance low you should have at least {Mini_Withdraw} {TOKEN} to Withdraw_", parse_mode="Markdown")
             return
    except:
-        bot.send_message(message.chat.id, "This command having error pls wait for ficing the glitch by admin")
+        bot.send_message(message.chat.id, "This command having error pls wait for fixing the glitch by admin")
         bot.send_message(OWNER_ID, "Your bot got an error fix it fast!\n Error on command: "+message.text)
         return
 
@@ -276,13 +276,13 @@ def trx_address(message):
         data = json.load(open('users.json', 'r'))
         data['wallet'][user] = message.text
 
-        bot.send_message(message.chat.id, "*💹Your Trx wallet set to " +
+        bot.send_message(message.chat.id, "*💹Your Infotech wallet set to " +
                          data['wallet'][user]+"*", parse_mode="Markdown")
         json.dump(data, open('users.json', 'w'))
         return menu(message.chat.id)
     else:
         bot.send_message(
-            message.chat.id, "*⚠️ It's Not a Valid Trx Address!*", parse_mode="Markdown")
+            message.chat.id, "*⚠️ Please Try Again*", parse_mode="Markdown")
         return menu(message.chat.id)
    except:
         bot.send_message(message.chat.id, "This command having error pls wait for ficing the glitch by admin")
